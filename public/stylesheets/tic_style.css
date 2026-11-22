@@ -1,0 +1,63 @@
+.table {
+	border-collapse: separate;
+	width: auto;
+	margin: 0 auto;
+	border-spacing: 1px;
+}
+
+.table td {
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #BBBBBB;
+}
+.table td:hover {
+	border: 2px solid #44419D;
+}
+
+.disabled_table {
+	background-color: #F0EFEF;
+}
+
+.table .disabled_table td:hover {
+	border: 2px solid #7F7E7E;
+}
+
+.center_block {
+    float: left;
+    margin: 0 auto;
+    width: 700px;
+}
+
+.left_block {
+	min-width: 130px;
+}
+
+#field {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.player_sign {
+	padding: 2px;
+	width: 16px;
+	height: 16px;
+}
+#status_bar {
+	margin-top: 20px;
+	padding: 10px;
+    text-align: center;
+}
+.tic_info {
+	background-color: #B7FEC3;
+	border: 1px solid #029A1B;
+	border-radius: 3px;
+}
+
+.tic_error {
+	background-color: #FEA3A3;
+	border: 1px solid #9A0202;
+	border-radius: 3px;
+}

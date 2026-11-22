@@ -1,5 +1,41 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("TicTacToe online") {
+    <section>
+        <script type="text/javascript" charset="utf-8" src="@routes.Application.wsJs()"></script>
+        
+    <div class="container">
+      <div class="row">
+        <div class="center_block"><h3>TicTacToe online</h3></div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-2 left_block">
+          <form>
+            <div class="form-group">
+              <label for="input_rows">Row count</label>
+              <input type="number" id="input_rows" value="10" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="input_cols">Column count</label>
+              <input type="number" id="input_cols" value="10" class="form-control" />
+            </div>
+              <div class="form-group">
+              <button type="button" id="start_game" class="btn btn-primary">Start play</button>
+            </div>
+            <div class="form-group">
+              <button type="button" id="stop_game" class="btn btn-primary disabled">Stop game</button>
+            </div>
+          </form>
+        </div>
+
+      <div class="col-xs-6 center_block">
+        <div id="field"></div>
+      </div>
+      <div class="col-xs-6 center_block">
+        <div id="status_bar" class="tic_info" style="display: none;"></div>
+      </div>
+      </div>
+    </div>
+    </section>
 }
