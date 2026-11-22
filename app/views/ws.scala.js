@@ -1,3 +1,4 @@
+@(implicit request: play.mvc.Http.Request)
 $(function(){
 /*
     // get websocket class, firefox has a different way to get it

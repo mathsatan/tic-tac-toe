@@ -1,22 +1,22 @@
 package models;
 
-import play.mvc.*;
-
+import org.apache.pekko.stream.javadsl.SourceQueueWithComplete;
 import java.util.UUID;
 
 public class Player<T> {
 
-    private WebSocket.Out<T> connection;
-    private UUID uuid;
+    private final SourceQueueWithComplete<T> connection;
+    private final UUID uuid;
     
-    public Player(WebSocket.Out<T> out, UUID uuid) {
+    public Player(SourceQueueWithComplete<T> out, UUID uuid) {
         this.connection = out;
         this.uuid = uuid;
     }
 
-    public WebSocket.Out<T> connection() {
+    public SourceQueueWithComplete<T> connection() {
         return this.connection;
     }
+
     public UUID uuid() {
         return this.uuid;
     }

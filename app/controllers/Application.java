@@ -1,33 +1,36 @@
 package controllers;
 
 import models.TicGame;
-
-import play.api.Play;
+import org.apache.pekko.stream.Materializer;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
 import views.html.index;
 
-import scala.App;
-
+import javax.inject.Inject;
 import java.util.UUID;
 
 public class Application extends Controller {
 
-    public static Result index() {
+    private final Materializer materializer;
+
+    @Inject
+    public Application(Materializer materializer) {
+        this.materializer = materializer;
+    }
+
+    public Result index() {
         return ok(index.render());
     }
-	
-	public static Result wsJs() {
-		return ok(views.js.ws.render());
-	}
-	
-	public static WebSocket<String> wsInterface() {
-		return new WebSocket<String>() {            
-			public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
-				UUID uuid = UUID.randomUUID();
-				TicGame.start(in, out, uuid);
-			}
-    	};
-	}
+
+    public Result wsJs(play.mvc.Http.Request request) {
+    	return ok(views.js.ws.render(request));
+    }
+
+    public WebSocket wsInterface() {
+        return WebSocket.Text.accept(request -> {
+            UUID uuid = UUID.randomUUID();
+            return TicGame.start(uuid, materializer);
+        });
+    }
 }
