@@ -8,4 +8,4 @@ WORKDIR /app
 
 COPY --from=builder /app/target/universal/stage /app
 
-CMD ["sh", "-c", "bin/tic-tac-toe-play -Dhttp.port=${PORT:-9000} -Dplay.http.secret.key=${APPLICATION_SECRET} -J-Xmx320m -J-Xms128m -J-XX:+UseSerialGC"]
+CMD ["sh", "-c", "bin/tic-tac-toe -Dhttp.port=${PORT:-9000} -Dplay.http.secret.key=${APPLICATION_SECRET} -J-Xmx320m -J-Xms128m -J-XX:+UseSerialGC"]
